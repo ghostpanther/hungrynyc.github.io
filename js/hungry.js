@@ -4,7 +4,7 @@ function test(){
 	$.ajax('https://powerful-falls-2281.herokuapp.com/' {
 		type: 'GET',
 		dataType: 'json'
-	}.done(function(data){
+	}).done(function(data){
 		console.log(data)
 	});
 };
