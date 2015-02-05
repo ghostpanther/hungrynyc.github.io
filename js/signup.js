@@ -11,6 +11,7 @@ $(function(){
     }).done(function(data){
       console.log('You just signed up!')
       console.log(data);
+      window.location.href="dashboard.html";
     });
   });
 
