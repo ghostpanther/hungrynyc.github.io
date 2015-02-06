@@ -15,6 +15,27 @@ $('document').ready(function(){
 			e.preventDefault(); 
 			console.log('submitted!');
 			ScrollDown();
+            var seconds = 15;
+                    var counter = setInterval(timer, 1000);
+                    $('.timer')[0].innerText = seconds;
+                    timer();
+                    function timer() {
+                        seconds--;
+                        $('.timer')[0].innerText = seconds;
+                        if (seconds <= 0) {
+                         clearInterval(counter);
+                         console.log('yayyyyyyy');
+                        };
+                    };
+            $.ajax({
+                url: 'https://hidden-ravine-3378.herokuapp.com/users',
+                method: 'GET'
+                }).done(function(rest) {
+                    $('.name')[0].innerText = rest.name;
+                    $('.address')[0].innerText = "Fake Street Name";
+                    $('.rating')[0].attr("src", rest.rating_img_url);
+                    $('.phone')[0].innerText = rest.phone;
+             })
 		});
 	};
 
