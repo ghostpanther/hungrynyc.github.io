@@ -8,6 +8,55 @@ function ScrollDown(){
     $('.selection').delay(750).hide(0); //Aftr 750 miliseconds, hide the 'selection' div.
 }
 
+function Start_Timer() {
+    var seconds = 5;
+    var counter = setInterval(timer, 1000);
+    $('.timer')[0].innerText = seconds;
+    timer();
+    function timer() {
+        seconds--;
+        $('.timer')[0].innerText = seconds;
+        if (seconds <= 0) {
+         clearInterval(counter);
+         console.log('change');
+         Start_Timer2();
+        };
+    };
+}
+
+function Start_Timer2() {
+    $('.name')[0].innerText = "zac"
+    var seconds = 5;
+    var counter = setInterval(timer, 1000);
+    $('.timer')[0].innerText = seconds;
+    timer();
+    function timer() {
+        seconds--;
+        $('.timer')[0].innerText = seconds;
+        if (seconds <= 0) {
+         clearInterval(counter);
+         console.log('change1');
+         Start_Timer3();
+        };
+    };
+}
+
+function Start_Timer3() {
+    $('.name')[0].innerText = "amy"
+    var seconds = 5;
+    var counter = setInterval(timer, 1000);
+    $('.timer')[0].innerText = seconds;
+    timer();
+    function timer() {
+        seconds--;
+        $('.timer')[0].innerText = seconds;
+        if (seconds <= 0) {
+         clearInterval(counter);
+         console.log('change final');
+        };
+    };
+}
+
 $('document').ready(function(){
 
 	var showResults = function () {
@@ -15,18 +64,6 @@ $('document').ready(function(){
 			e.preventDefault(); 
 			console.log('submitted!');
 			ScrollDown();
-            var seconds = 15;
-                    var counter = setInterval(timer, 1000);
-                    $('.timer')[0].innerText = seconds;
-                    timer();
-                    function timer() {
-                        seconds--;
-                        $('.timer')[0].innerText = seconds;
-                        if (seconds <= 0) {
-                         clearInterval(counter);
-                         console.log('yayyyyyyy');
-                        };
-                    };
             $.ajax({
                 url: 'https://hidden-ravine-3378.herokuapp.com/users',
                 method: 'GET'
@@ -36,6 +73,7 @@ $('document').ready(function(){
                     $('.rating')[0].attr("src", rest.rating_img_url);
                     $('.phone')[0].innerText = rest.phone;
              })
+            Start_Timer();
 		});
 	};
 
