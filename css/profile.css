@@ -1,0 +1,43 @@
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  background-color: yellow;
+}
+
+h1 {
+  float: left;
+}
+
+header {
+  nav {
+    vertical-align: bottom;
+  }
+}
+
+section {
+  display: table;
+  margin: 0;
+  padding: 0 7%;
+  height: 30vh;
+  width: 100%;
+}
+
+.user {
+  background-color: #eeeeee;
+}
+
+.favorites {
+  background-color: papayawhip;
+}
+
+.history {
+  background-color: blue;
+}
