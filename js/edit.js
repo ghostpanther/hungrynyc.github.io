@@ -1,4 +1,4 @@
-console.log('LINKED');
+console.log('LOADED: EDIT FORM JS');
 
 $(function(){
 
