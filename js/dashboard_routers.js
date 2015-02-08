@@ -2,7 +2,13 @@ console.log('routes loaded');
 
 // *****PAGE FUNCTIONS*******
 
-var seconds = 5;
+Queens = ["Astoria" , "Corona" , "East Elmhurst" , "Elmhurst" , "Forest Hills" , "Fresh Pond" , "Glendale" , "Hunters Point" , "Jackson Heights" , "Long Island City" , "Maspeth" , "Middle Village" , "Rego Park" , "Ridgewood" , "Sunnyside" , "Woodside" ]
+Manhattan = [ "Battery Park City" , "Bowery" , "Central Park" , "Chinatown" , "Civic Center" , "East Harlem" , "Financial District" , "Flatiron" , "Garment District" , "Gramercy Park" , "Greenwich Village" , "East Village" , "Hamilton Heights" , "Harlem" , "Hell's Kitchen" , "Inwood" , "Kips Bay" , "Lenox Hill" , "Little Italy" , "Lower Eastside" , "Madison Square" , "Manhattan Valley" , "Meatpacking District" , "Midtown" , "Morningside Heights" , "Murray Hill" , "SoHo" , "Stuyvesant Town" , "Sutton Place" , "Times Square" , "Tribeca" , "Turtle Bay" , "Upper Eastside" , "Upper Westside" , "Washington Heights" , "Yorkville" ]
+Bronx = [ "Bedford Park" , "Belmont" , "Fordham" , "Kingsbridge" , "Marble Hill" , "Norwood" , "Riverdale" , "University Heights" , "Woodlawn" , "Downtown Bronx" , "East Tremont" , "Highbridge" , "Hunts Point" , "Longwood" , "Melrose" , "Morris Heights" , "Morrisania" , "Mott Haven" , "The Hub" , "Tremont" , "West Farms" , "Allerton" , "Baychester" , "Bronxdale" , "City Island" , "Co-op City" , "Eastchester" , "Edenwald" , "Indian Village" , "Laconia" , "Olinville" , "Morris Park" , "Pelham Gardens" , "Pelham Parkway" , "Van Nest" , "Wakefield" , "Williamsbridge" , "Bronx River" , "Bruckner" , "Castle Hill" , "Clason Point" , "Country Club" , "Edgewater Park" , "Harding Park" , "Parkchester" , "Park Versailles" , "Pelham Bay" , "Soundview" , "Schuylerville" , "Throggs Neck" , "Unionport" , "Westchester Square"]
+Brooklyn = [ "Brooklyn Heights" , "Brooklyn Navy Yard" , "Cadman Plaza" , "Clinton Hill" , "Downtown Brooklyn" , "DUMBO" , "Fort Greene" , "Fulton" , "Pacific Park" , "Prospect Heights" , "Vinegar Hill" , "South Brooklyn" , "Bedford" , "Bushwick" , "Greenpoint" , "Williamsburg" , "Crown Heights" , "Ditmas Park" , "Flatbush" , "Prospect Park" , "Bath Beach" , "Bay Ridge" , "Bensonhurst", "Borough Park" , "Dyker Heights" , "Mapleton" , "New Utrecht" , "Sunset Park" , "Barren Island" , "Bergen Beach" , "Canarsie" , "Coney Island" , "Flatlands" , "Gerritsen Beach" , "Gravesend" , "Homecrest", "Marine Park" , "Midwood " , "Mill Basin" , "Plumb Beach" , "Brownsville" , "East New York" , "Highland Park" ]
+Staten_island = [ "Annadale" , "Arden Heights" , "Arlington" , "Arrochar" , "Bay Terrace" , "Bloomfield" , "Brighton Heights" , "Bulls Head" , "Castleton" , "Castleton Corners" , "Charleston" , "Chelsea" , "Clifton" , "Concord" , "Dongan Hills" , "Egbertville" , "Elm Park" , "Eltingville" , "Emerson Hill" , "Fort Wadsworth" , "Graniteville" , "Grant City" , "Grasmere" , "Great Kills" , "Greenridge" , "Grymes Hill" , "Hamilton Park" , "Heartland Village" , "Huguenot" , "Lighthouse Hill" , "Livingston" , "Manor Heights" , "Mariners Harbor" , "Meiers Corners" , "Midland Beach" , "New Brighton" , "New Dorp" , "New Springville" , "Oakwood" , "Ocean Breeze" , "Old Place" , "Old Town" , "Pleasant Plains" , "Port Richmond" , "Prince's Bay" , "Randall Manor" , "Richmond Valley" , "Richmondtown" , "Rosebank" , "Rossville" , "Sandy Ground" , "Shore Acres" , "Silver Lake" , "South Beach" , "St. George" , "Stapleton" , "Stapleton Heights" , "Sunnyside" , "Todt Hill" , "Tompkinsville" , "Tottenville" , "Tottenville Beach" , "Travis" , "Ward Hill" , "Westerleigh" , "West New Brighton" , "Willowbrook" , "Woodrow" ]
+
+var seconds = 11;
 var timerId;
 var result_counter = 0;
 
@@ -23,7 +29,7 @@ function StartTimer() {
 
 function GenerateResult (){
     result_counter += 1;
-    seconds = 5;
+    seconds = 11;
     if (result_counter != 4) {
         console.log(result_counter);
         $.ajax({
@@ -37,7 +43,7 @@ function GenerateResult (){
         })
         StartTimer();
     } else {
-        $('.timer')[0].innerText = 'Your going here!';
+        $('.timer')[0].innerText = "You're Here!";
         console.log('Success!')
     }
 }
@@ -54,6 +60,12 @@ function ScrollDown(){
 
 $('document').ready(function(){
 
+    for (i = 0; i < Manhattan.length; i++) {
+        var newOption = $('<option value=' + Manhattan[i] + '>' + Manhattan[i] + '</option>');
+        $('.neighborhood').append(newOption);
+    };
+
+
 	var showResults = function () {
 		$('.search').submit(function(e){
 			e.preventDefault(); 
@@ -68,6 +80,40 @@ $('document').ready(function(){
         console.log('stopped!') 
         clearInterval(timerId);
     })
+
+    $('.borough').change(function() {
+        if($(this)[0].value === 'Brooklyn') {
+            $('.neighborhood').empty();
+            for (i = 0; i < Brooklyn.length; i++) {
+                var newOption = $('<option value=' + Brooklyn[i] + '>' + Brooklyn[i] + '</option>');
+                $('.neighborhood').append(newOption);
+            };
+        } else if($(this)[0].value === 'Queens') {
+            $('.neighborhood').empty();
+            for (i = 0; i < Queens.length; i++) {
+                var newOption = $('<option value=' + Queens[i] + '>' + Queens[i] + '</option>');
+                $('.neighborhood').append(newOption);
+            };
+        } else if($(this)[0].value === 'Manhatten') {
+            $('.neighborhood').empty();
+            for (i = 0; i < Manhattan.length; i++) {
+                var newOption = $('<option value=' + Manhattan[i] + '>' + Manhattan[i] + '</option>');
+                $('.neighborhood').append(newOption);
+            };
+        } else if($(this)[0].value === 'Bronx') {
+            $('.neighborhood').empty();
+            for (i = 0; i < Bronx.length; i++) {
+                var newOption = $('<option value=' + Bronx[i] + '>' + Bronx[i] + '</option>');
+                $('.neighborhood').append(newOption);
+            };
+        } else {
+            $('.neighborhood').empty();
+            for (i = 0; i < Staten_island.length; i++) {
+                var newOption = $('<option value=' + Staten_island[i] + '>' + Staten_island[i] + '</option>');
+                $('.neighborhood').append(newOption);
+            };
+        }
+    });
 
 	var allroutes = function() {
 	    var route = window.location.hash.slice(2);
