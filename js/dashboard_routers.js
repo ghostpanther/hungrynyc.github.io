@@ -33,9 +33,12 @@ function GenerateResult (){
     if (result_counter != 4) {
         console.log(result_counter);
         $.ajax({
-            url: 'https://hidden-ravine-3378.herokuapp.com/users',
-            method: 'GET'
+            url: 'https://hidden-ravine-3378.herokuapp.com/histories',
+            method: 'GET',
+            data: {neighborhood: $('.neighborhood')[0].value, category: $('.category')[0].value}
         }).done(function(rest) {
+            console.log(rest)
+            debugger
             $('.name')[0].innerText = rest.name;
             $('.address')[0].innerText = "Fake Street Name";
             $('.rating')[0].attr("src", rest.rating_img_url);
