@@ -9,5 +9,5 @@ $(function(){
       data: { "email": $("input[name='email']").value, "password": $("input[name ='password']").value}
     }).done(function(data){
     	console.log(data)
-    })
+	});
 });
