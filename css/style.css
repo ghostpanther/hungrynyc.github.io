@@ -7,13 +7,18 @@
 html, body {
 	text-align: center;
 	margin: 0;
-}
-
-.result {
-	height: 83%;
+	width: 75%;
+	height: 75%;
 	position: fixed;
-	background-image: url("https://38.media.tumblr.com/tumblr_lr4nntl2Er1qhq1pjo1_500.gif");
+	background-image: url("http://www.skyline-newyork.com/wp-content/uploads/2012/09/New-York-City-Skyline-Image.jpg");
+
+/*	background-image: url("https://38.media.tumblr.com/tumblr_lr4nntl2Er1qhq1pjo1_500.gif");*/
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
+
+}
+
+.result {
+	color: white;
 }
