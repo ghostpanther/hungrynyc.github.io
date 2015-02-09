@@ -27,6 +27,8 @@ function StartTimer() {
     timerId = setInterval(UpdateTime, 1000);
 }
 
+
+ // 'https://hidden-ravine-3378.herokuapp.com/histories't
 // function displayInfo(rest) {
 //     var phone = rest.phone.slice(0,3) + '-' + rest.phone.slice(3,6) + '-' + rest.phone.slice(6,10);
 //     var url = '<a href="' + rest.yelp_website + '">See Yelp Page</a>';
