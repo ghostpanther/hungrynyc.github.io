@@ -27,7 +27,7 @@ function StartTimer() {
     timerId = setInterval(UpdateTime, 1000);
 }
 
- // 'https://hidden-ravine-3378.herokuapp.com/histories'
+ // 'https://hidden-ravine-3378.herokuapp.com/histories't
 
 function GenerateResult (){
      var neighborhood = $('.neighborhood')[0].value;
