@@ -39,11 +39,14 @@ function GenerateResult (){
             method: 'GET',
             data: {neighborhood: neighborhood, category: category }
         }).done(function(rest) {
+            var phone = rest.phone.to_s.insert(-8, '-').insert(-5, '-');
+            var url = '<a href="' + rest.yelp_website + '">See Yelp Page</a>';
+
             $('.name')[0].innerText = rest.name;
             $('.address')[0].innerText = rest.location[0] + " " + rest.location[1] + " " + rest.location[2]
             $('.rating').attr("src", rest.rating_image);
-            $('.phone')[0].innerText = rest.phone;
-            $('.yelp_website')[0].innerText = rest.yelp_website;
+            $('.phone')[0].innerText = phone;
+            $('.yelp_website')[0].innerText = url;
         });
         StartTimer();
     } else {
