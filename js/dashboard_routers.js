@@ -1,64 +1,151 @@
-console.log('routes loaded')
+console.log('routes loaded');
+
+// *****PAGE FUNCTIONS*******
+
+Queens = ["Astoria" , "Corona" , "East Elmhurst" , "Elmhurst" , "Forest Hills" , "Fresh Pond" , "Glendale" , "Hunters Point" , "Jackson Heights" , "Long Island City" , "Maspeth" , "Middle Village" , "Rego Park" , "Ridgewood" , "Sunnyside" , "Woodside" ]
+Manhattan = [ "Battery Park City" , "Bowery" , "Central Park" , "Chinatown" , "Civic Center" , "East Harlem" , "Financial District" , "Flatiron" , "Garment District" , "Gramercy Park" , "Greenwich Village" , "East Village" , "Hamilton Heights" , "Harlem" , "Hell's Kitchen" , "Inwood" , "Kips Bay" , "Lenox Hill" , "Little Italy" , "Lower Eastside" , "Madison Square" , "Manhattan Valley" , "Meatpacking District" , "Midtown" , "Morningside Heights" , "Murray Hill" , "SoHo" , "Stuyvesant Town" , "Sutton Place" , "Times Square" , "Tribeca" , "Turtle Bay" , "Upper Eastside" , "Upper Westside" , "Washington Heights" , "Yorkville" ]
+Bronx = [ "Bedford Park" , "Belmont" , "Fordham" , "Kingsbridge" , "Marble Hill" , "Norwood" , "Riverdale" , "University Heights" , "Woodlawn" , "Downtown Bronx" , "East Tremont" , "Highbridge" , "Hunts Point" , "Longwood" , "Melrose" , "Morris Heights" , "Morrisania" , "Mott Haven" , "The Hub" , "Tremont" , "West Farms" , "Allerton" , "Baychester" , "Bronxdale" , "City Island" , "Co-op City" , "Eastchester" , "Edenwald" , "Indian Village" , "Laconia" , "Olinville" , "Morris Park" , "Pelham Gardens" , "Pelham Parkway" , "Van Nest" , "Wakefield" , "Williamsbridge" , "Bronx River" , "Bruckner" , "Castle Hill" , "Clason Point" , "Country Club" , "Edgewater Park" , "Harding Park" , "Parkchester" , "Park Versailles" , "Pelham Bay" , "Soundview" , "Schuylerville" , "Throggs Neck" , "Unionport" , "Westchester Square"]
+Brooklyn = [ "Brooklyn Heights" , "Brooklyn Navy Yard" , "Cadman Plaza" , "Clinton Hill" , "Downtown Brooklyn" , "DUMBO" , "Fort Greene" , "Fulton" , "Pacific Park" , "Prospect Heights" , "Vinegar Hill" , "South Brooklyn" , "Bedford" , "Bushwick" , "Greenpoint" , "Williamsburg" , "Crown Heights" , "Ditmas Park" , "Flatbush" , "Prospect Park" , "Bath Beach" , "Bay Ridge" , "Bensonhurst", "Borough Park" , "Dyker Heights" , "Mapleton" , "New Utrecht" , "Sunset Park" , "Barren Island" , "Bergen Beach" , "Canarsie" , "Coney Island" , "Flatlands" , "Gerritsen Beach" , "Gravesend" , "Homecrest", "Marine Park" , "Midwood " , "Mill Basin" , "Plumb Beach" , "Brownsville" , "East New York" , "Highland Park" ]
+Staten_island = [ "Annadale" , "Arden Heights" , "Arlington" , "Arrochar" , "Bay Terrace" , "Bloomfield" , "Brighton Heights" , "Bulls Head" , "Castleton" , "Castleton Corners" , "Charleston" , "Chelsea" , "Clifton" , "Concord" , "Dongan Hills" , "Egbertville" , "Elm Park" , "Eltingville" , "Emerson Hill" , "Fort Wadsworth" , "Graniteville" , "Grant City" , "Grasmere" , "Great Kills" , "Greenridge" , "Grymes Hill" , "Hamilton Park" , "Heartland Village" , "Huguenot" , "Lighthouse Hill" , "Livingston" , "Manor Heights" , "Mariners Harbor" , "Meiers Corners" , "Midland Beach" , "New Brighton" , "New Dorp" , "New Springville" , "Oakwood" , "Ocean Breeze" , "Old Place" , "Old Town" , "Pleasant Plains" , "Port Richmond" , "Prince's Bay" , "Randall Manor" , "Richmond Valley" , "Richmondtown" , "Rosebank" , "Rossville" , "Sandy Ground" , "Shore Acres" , "Silver Lake" , "South Beach" , "St. George" , "Stapleton" , "Stapleton Heights" , "Sunnyside" , "Todt Hill" , "Tompkinsville" , "Tottenville" , "Tottenville Beach" , "Travis" , "Ward Hill" , "Westerleigh" , "West New Brighton" , "Willowbrook" , "Woodrow" ]
+
+var seconds = 11;
+var timerId;
+var result_counter = 0;
+
+function UpdateTime() {
+    seconds--;
+    $('.timer')[0].innerText = seconds;
+    if (seconds <= 0) {
+        clearInterval(timerId);
+        GenerateResult();
+    }; 
+};
+
+function StartTimer() {
+    seconds--;
+    $('.timer')[0].innerText = seconds;
+    timerId = setInterval(UpdateTime, 1000);
+}
+
+function GenerateResult (){
+    var neighborhood = $('.neighborhood')[0].value;
+    var category = $('.category')[0].value;
+    result_counter += 1;
+    seconds = 11;
+    if (result_counter != 4) {
+        console.log(result_counter);
+        $.ajax({
+            url:'https://hidden-ravine-3378.herokuapp.com/histories',
+            method: 'GET',
+            data: {neighborhood: neighborhood, category: category }
+        }).done(function(rest) {
+            var phone = rest.phone.to_s.insert(-8, '-').insert(-5, '-');
+            var url = '<a href="' + rest.yelp_website + '">See Yelp Page</a>';
+
+            $('.name')[0].innerText = rest.name;
+            $('.address')[0].innerText = rest.location[0] + " " + rest.location[1] + " " + rest.location[2]
+            $('.rating').attr("src", rest.rating_image);
+            $('.phone')[0].innerText = phone;
+            $('.yelp_website')[0].innerText = url;
+
+            var split = rest.name.split(" ")
+            var join = split.join("+")
+
+            $('google_maps').innerText[0] = '<iframe
+            width="600"
+            height="450"
+            frameborder="0" style="border:0"
+            src="https://www.google.com/maps/embed/v1/place?key=obq-2QtxT6TjLL1QYtt3T24A
+            &q=' + join + ',' + rest.location[2]+ '+NY>
+            </iframe>'
+        });
+        StartTimer();
+    } else {
+        $('.timer')[0].innerText = "You're Here!";
+        console.log('Success!')
+    }
+}
 
 function ScrollDown(){
-	$('.result').css('position', 'relative') //Change the the 'result' div position to relative
-	$('html, body').animate({ // Animate the body of the html to perform the following commands:
-        scrollTop: $('.result').offset().top // For 'result' tab, move it to the top of the screen by 750 miliseconds.
-    }, 750); 
-    $('.selection').delay(750).hide(0); //Aftr 750 miliseconds, hide the 'selection' div.
+    $('.result').css('position', 'relative') //Change the the 'result' div position to relative
+    $('html, body').animate({ // Animate the body of the html to perform the following commands:
+        scrollTop: $('.result').offset().top // For 'result' tab, move it to the top of the screen by 750 miliseconds.
+    }, 750); 
+    $('.selection').delay(750).hide(0); //Aftr 750 miliseconds, hide the 'selection' div.
 }
+
+// *****ROUTE DIRECTOR*******
 
 $('document').ready(function(){
 
-	var showResults = function () {
-		$('form').submit(function(e){
-			e.preventDefault(); 
-			console.log('submitted!');
-			ScrollDown();
-            var seconds = 15;
-                    var counter = setInterval(timer, 1000);
-                    $('.timer')[0].innerText = seconds;
-                    timer();
-                    function timer() {
-                        seconds--;
-                        $('.timer')[0].innerText = seconds;
-                        if (seconds <= 0) {
-                         clearInterval(counter);
-                         console.log('yayyyyyyy');
-                        };
-                    };
-            $.ajax({
-                url: 'https://hidden-ravine-3378.herokuapp.com/users',
-                method: 'GET'
-                }).done(function(rest) {
-                    $('.name')[0].innerText = rest.name;
-                    $('.address')[0].innerText = "Fake Street Name";
-                    $('.rating')[0].attr("src", rest.rating_img_url);
-                    $('.phone')[0].innerText = rest.phone;
-             })
-		});
-	};
+    for (i = 0; i < Manhattan.length; i++) {
+        var newOption = $('<option value=' + Manhattan[i] + '>' + Manhattan[i] + '</option>');
+        $('.neighborhood').append(newOption);
+    };
 
-	var allroutes = function() {
-	    var route = window.location.hash.slice(2);
-      };
 
-    var routes = {
-		'/results': showResults
+    var showResults = function () {
+        $('.search').submit(function(e){
+            e.preventDefault(); 
+            console.log('submitted!');
+            ScrollDown();
+            GenerateResult();
+        });
     };
 
-    //
-    // instantiate the router.
-    //
-    var router = Router(routes);
+    $('.save').submit(function(e){
+        e.preventDefault();
+        console.log('stopped!') 
+        clearInterval(timerId);
+    })
 
-    //
-    // a global configuration setting.
-    //
+    $('.borough').change(function() {
+        if($(this)[0].value === 'Brooklyn') {
+            $('.neighborhood').empty();
+            for (i = 0; i < Brooklyn.length; i++) {
+                var newOption = $('<option value=' + Brooklyn[i] + '>' + Brooklyn[i] + '</option>');
+                $('.neighborhood').append(newOption);
+            };
+        } else if($(this)[0].value === 'Queens') {
+            $('.neighborhood').empty();
+            for (i = 0; i < Queens.length; i++) {
+                var newOption = $('<option value=' + Queens[i] + '>' + Queens[i] + '</option>');
+                $('.neighborhood').append(newOption);
+            };
+        } else if($(this)[0].value === 'Manhatten') {
+            $('.neighborhood').empty();
+            for (i = 0; i < Manhattan.length; i++) {
+                var newOption = $('<option value=' + Manhattan[i] + '>' + Manhattan[i] + '</option>');
+                $('.neighborhood').append(newOption);
+            };
+        } else if($(this)[0].value === 'Bronx') {
+            $('.neighborhood').empty();
+            for (i = 0; i < Bronx.length; i++) {
+                var newOption = $('<option value=' + Bronx[i] + '>' + Bronx[i] + '</option>');
+                $('.neighborhood').append(newOption);
+            };
+        } else {
+            $('.neighborhood').empty();
+            for (i = 0; i < Staten_island.length; i++) {
+                var newOption = $('<option value=' + Staten_island[i] + '>' + Staten_island[i] + '</option>');
+                $('.neighborhood').append(newOption);
+            };
+        }
+    });
 
-    router.configure({
-    	on: allroutes
-    });
+    var allroutes = function() {
+        var route = window.location.hash.slice(2);
+      };
 
-    router.init();
+    var routes = {
+        '/results': showResults
+    };
+
+    var router = Router(routes);
+
+    router.configure({
+        on: allroutes
+    });
+
+    router.init();
 });
