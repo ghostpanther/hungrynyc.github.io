@@ -1,0 +1,199 @@
+body {
+  height: 100%;
+  margin: 0;
+  background-color: papayawhip;
+  font-family: georgia;
+}
+
+.wrapper {
+
+  margin: 0 auto;
+}
+
+a.btn {
+  border: 2px solid tomato;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  padding: 5px 10px;
+  text-decoration: none;
+  font-size: 24px;
+  background: tomato;
+  color: #fff;
+  font-family: tahoma;
+}
+
+a.btn:hover {
+  background: tomato;
+}
+
+#about-btn {
+  background: mediumaquamarine;
+  box-shadow: inset 0 3px 0 rgba(0,0,0,.1);
+  bottom: 0;
+  color: #fff;
+  cursor: pointer;
+  height: 45px;
+  left: 0;
+  line-height: 45px;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  z-index: 10;
+  -webkit-transition:bottom .3s ease-out 1.7s;
+  -moz-transition:bottom .3s ease-out 1.7s;
+  transition:bottom .3s ease-out 1.7s;
+}
+
+#how-it-works {
+  
+}
+
+footer {
+  margin: 0 auto;
+  padding: 5px;
+  position: absolute;
+  bottom: 0;
+  font-size: 12px;
+}
+
+img {
+  vertical-align: middle;
+}
+
+/*** LOGIN/SIGNUP FORM MODALS ***/
+
+.login-form-modal,
+.signup-form-modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0,0,0,0.8);
+  z-index: 1000;
+  opacity: 0;
+  -webkit-transition: opacity 400ms ease-in;
+  -moz-transition: opacity 400ms ease-in;
+  transition: opacity 400ms ease-in;
+  pointer-events: none;
+}
+
+.login-form-modal:target,
+.signup-form-modal:target {
+  opacity: 0.9;
+  pointer-events: auto;
+}
+
+.close-it {
+  position: fixed;
+  top: 32px;
+  right: 32px;
+  display: block;
+  width: 42px;
+  height: 42px;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  background: url(../images/close.png) no-repeat;
+  -webkit-background-size: 100%;
+  -moz-background-size: 100%;
+  background-size: 100%;
+}
+
+.close-it:hover {
+  background-position: 0px -42px;
+}
+
+/*** LOGIN/SIGNUP FORM STYLE ***/
+
+#login-form,
+#signup-form {
+  margin:20% auto 0 auto;
+  padding: 20px;
+  width: 545px;
+  height: auto;
+  overflow: hidden;
+  background: ;
+}
+
+#login-form .input-group,
+#login-form input, 
+#login-form label,
+#signup-form .input-group,
+#signup-form input, 
+#signup-form label {
+  display: inline-block;
+}
+
+#login-form .input-group,
+#signup-form .input-group {
+  position: relative;
+  margin: 10px 0;
+}
+
+#login-form input,
+#login-form label,
+#signup-form input,
+#signup-form label {
+  margin-right: 20px;
+  padding: 20px 0;
+  width: 250px;
+  font-family: georgia;
+  font-size: 18px;
+}
+
+#login-form input,
+#signup-form input {
+  outline: none;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid tomato;
+  color: gray;
+}
+
+#login-form button,
+#signup-form button {
+  padding: 10px;
+  width: 525px;
+  border: 2px solid tomato;
+  background: transparent;
+  color: tomato;
+  cursor: pointer;
+  font-family: tahoma;
+  font-size: 14px;
+}
+
+#login-form button:hover,
+#signup-form button:hover {
+  background: tomato;
+  color: white;
+}
+
+#login-form label,
+#signup-form label {
+  position: absolute;
+  top: 30%;
+  -webkit-transform: translate(0, -50%);
+  -ms-transform: translate(0, -50%);
+  transform: translate(0, -30%);
+  pointer-events: none;
+  font-style: italic;
+  color: #bbb;
+  -webkit-transition: .2s ease all;
+  transition: .2s ease all;
+}
+
+#login-form input:focus,
+#signup-form input:focus {
+  border-color: lightgray;
+}
+
+#login-form input:focus ~ label,
+#login-form input:valid ~ label,
+#signup-form input:focus ~ label,
+#signup-form input:valid ~ label {
+  top: 0;
+  font-size: 12px;
+  color: tomato;
+}

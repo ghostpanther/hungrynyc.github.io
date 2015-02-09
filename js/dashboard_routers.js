@@ -27,6 +27,8 @@ function StartTimer() {
     timerId = setInterval(UpdateTime, 1000);
 }
 
+
+ // 'https://hidden-ravine-3378.herokuapp.com/histories't
 // function displayInfo(rest) {
 //     var phone = rest.phone.slice(0,3) + '-' + rest.phone.slice(3,6) + '-' + rest.phone.slice(6,10);
 //     var url = '<a href="' + rest.yelp_website + '">See Yelp Page</a>';
@@ -82,8 +84,8 @@ function ScrollDown(){
     $('.result').css('position', 'relative') //Change the the 'result' div position to relative
     $('html, body').animate({ // Animate the body of the html to perform the following commands:
         scrollTop: $('.result').offset().top // For 'result' tab, move it to the top of the screen by 750 miliseconds.
-    }, 750); 
-    $('.selection').delay(750).hide(0); //Aftr 750 miliseconds, hide the 'selection' div.
+    }, 500); 
+    $('.selection').delay(550).hide(250); //Aftr 750 miliseconds, hide the 'selection' div.
 }
 
 // *****ROUTE DIRECTOR*******
@@ -95,14 +97,17 @@ $('document').ready(function(){
         $('.neighborhood').append(newOption);
     };
 
+    for (i = 0; i < Categories.length; i++) {
+        var allCategories = $('<option value=' + Categories[i] + '>' + Categories[i] + '</option>');
+        $('.category').append(allCategories);
+    };
+
 
 	var showResults = function () {
-		$('.search').submit(function(e){
-			e.preventDefault(); 
+        console.log("results hit")
 			console.log('submitted!');
 			ScrollDown();
             GenerateResult();
-		});
 	};
 
     $('.save').submit(function(e){
