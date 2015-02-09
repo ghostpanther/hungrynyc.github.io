@@ -27,26 +27,21 @@ function StartTimer() {
     timerId = setInterval(UpdateTime, 1000);
 }
 
- // 'https://hidden-ravine-3378.herokuapp.com/histories'
-
 function GenerateResult (){
-     var neighborhood = $('.neighborhood')[0].value;
-     var category = $('.category')[0].value;
+    var neighborhood = $('.neighborhood')[0].value;
+    var category = $('.category')[0].value;
     result_counter += 1;
     seconds = 11;
     if (result_counter != 4) {
         console.log(result_counter);
         $.ajax({
-            url:'http://127.0.0.1:3000/histories',
+            url:'https://hidden-ravine-3378.herokuapp.com/histories',
             method: 'GET',
             data: {neighborhood: neighborhood, category: category }
         }).done(function(rest) {
-            console.log(rest)
-            debugger
             $('.name')[0].innerText = rest.name;
-            $('.address')[0].innerText = "Fake Street Name";
-            $('.rating')[0].attr("src", rest.rating_img_url);
-            $('.phone')[0].innerText = rest.phone;
+            $('.address')[0].innerText = rest.location[0] + " " + rest.location[1] + " " + rest.location[2]
+            $('.rating').attr("src", rest.rating_image);
         })
         StartTimer();
     } else {
