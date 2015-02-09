@@ -2,10 +2,10 @@ console.log('LINKED');
 
 $(function(){
 
-  $('form').on('submit', function(e){
+  $('.login_form').on('submit', function(e){
   	e.preventDefault()
-  	var email = $('.email').val();
-  	var pass = $('.password').val();
+  	var email = $(".login_email").val();
+  	var pass = $(".login_pass").val();
   	console.log(email +" " + pass)
 
 	    $.ajax({
@@ -14,7 +14,7 @@ $(function(){
 	      data: { "email": email, "password": pass}
 	    }).done(function(data){
 	    	console.log(data);
-	    	sessionStorage.setItem("","")
+	    	// sessionStorage.setItem("","")
 	    })
 	  
 	});
@@ -25,3 +25,4 @@ $(function(){
 // 	      type: 'POST',
 // 	      data: { "email": 'zac@example.com', "password": 'fireball'}
 // 	    })
+
