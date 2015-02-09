@@ -27,30 +27,55 @@ function StartTimer() {
     timerId = setInterval(UpdateTime, 1000);
 }
 
+
  // 'https://hidden-ravine-3378.herokuapp.com/histories't
+// function displayInfo(rest) {
+//     var phone = rest.phone.slice(0,3) + '-' + rest.phone.slice(3,6) + '-' + rest.phone.slice(6,10);
+//     var url = '<a href="' + rest.yelp_website + '">See Yelp Page</a>';
+
+//     $('.name')[0].innerText = rest.name;
+//     $('.address')[0].innerText = rest.location[0] + " " + rest.location[1] + " " + rest.location[2];
+//     $('.rating').attr("src", rest.rating_image);
+//     $('.phone')[0].innerText = phone;
+//     $('.yelp_website')[0].innerHTML = url;
+
+//     console.log('info');
+// }
 
 function GenerateResult (){
-     var neighborhood = $('.neighborhood')[0].value;
-     var category = $('.category')[0].value;
+    var neighborhood = $('.neighborhood')[0].value;
+    var category = $('.category')[0].value;
     result_counter += 1;
     seconds = 11;
     if (result_counter != 4) {
         console.log(result_counter);
         $.ajax({
-            url:'http://127.0.0.1:3000/histories',
+            url:'https://hidden-ravine-3378.herokuapp.com/histories',
             method: 'GET',
             data: {neighborhood: neighborhood, category: category }
         }).done(function(rest) {
-            console.log(rest)
-            debugger
+            console.log(rest);
+
+            // var join = rest.name.split(" ").join("+");
+
+            // $('.google_maps')[0].setAttribute('width', '250');
+            // $('.google_maps')[0].setAttribute('height', '250');
+            // $('.google_maps')[0].setAttribute('frameborder', '0');
+            // $('.google_maps')[0].setAttribute('border', '0');
+            // $('.google_maps')[0].setAttribute('src', 'https://www.google.com/maps/embed/v1/place?key=AIzaSyA2VLYojf301gXuW4cPQb682IvtDI2Qgos&q=' + join + ',' + rest.location[0].split(" ").join("+") + '+' + rest.location[2].split(" ").join("+")+ '+NY');
+
+            var phone = rest.phone.slice(0,3) + '-' + rest.phone.slice(3,6) + '-' + rest.phone.slice(6,10);
+            var url = '<a href="' + rest.yelp_website + '" target="_blank">See Yelp Page</a>';
+
             $('.name')[0].innerText = rest.name;
-            $('.address')[0].innerText = "Fake Street Name";
-            $('.rating')[0].attr("src", rest.rating_img_url);
-            $('.phone')[0].innerText = rest.phone;
-        })
+            $('.address')[0].innerText = rest.location[0] + " " + rest.location[1] + " " + rest.location[2];
+            $('.rating').attr("src", rest.rating_image);
+            $('.phone')[0].innerText = phone;
+            $('.yelp_website')[0].innerHTML = url;
+        });
         StartTimer();
     } else {
-        $('.timer')[0].innerText = "You're Here!";
+        $('.timer')[0].innerText = "You're eating here!";
         console.log('Success!')
     }
 }
