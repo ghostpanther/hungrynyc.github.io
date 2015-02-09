@@ -6,6 +6,8 @@ $(function(){
     $.ajax({
       url: 'http://127.0.0.1:3000/sessions',
       type: 'POST',
-      data: { "email": $('.email')[0].value, "password": $('.password')[0].value}
+      data: { "email": $("input[name='email']").value, "password": $("input[name ='password']").value}
+    }).done(function(data){
+    	console.log(data)
     })
 });
