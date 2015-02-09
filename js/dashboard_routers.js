@@ -60,13 +60,13 @@ function GenerateResult (){
         }).done(function(rest) {
             console.log(rest);
 
-            // var join = rest.name.split(" ").join("+");
+            var join = rest.name.split(" ").join("+");
 
-            // $('.google_maps')[0].setAttribute('width', '250');
-            // $('.google_maps')[0].setAttribute('height', '250');
-            // $('.google_maps')[0].setAttribute('frameborder', '0');
-            // $('.google_maps')[0].setAttribute('border', '0');
-            // $('.google_maps')[0].setAttribute('src', 'https://www.google.com/maps/embed/v1/place?key=AIzaSyA2VLYojf301gXuW4cPQb682IvtDI2Qgos&q=' + join + ',' + rest.location[0].split(" ").join("+") + '+' + rest.location[2].split(" ").join("+")+ '+NY');
+            $('.google_maps')[0].setAttribute('width', '250');
+            $('.google_maps')[0].setAttribute('height', '250');
+            $('.google_maps')[0].setAttribute('frameborder', '0');
+            $('.google_maps')[0].setAttribute('border', '0');
+            $('.google_maps')[0].setAttribute('src', 'https://www.google.com/maps/embed/v1/place?key=AIzaSyA2VLYojf301gXuW4cPQb682IvtDI2Qgos&q=' + join + ',' + rest.location[0].split(" ").join("+") + '+' + rest.location[2].split(" ").join("+")+ '+NY');
 
             var phone = rest.phone.slice(0,3) + '-' + rest.phone.slice(3,6) + '-' + rest.phone.slice(6,10);
             var url = '<a href="' + rest.yelp_website + '" target="_blank">See Yelp Page</a>';
