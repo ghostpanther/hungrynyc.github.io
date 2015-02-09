@@ -97,6 +97,11 @@ $('document').ready(function(){
         $('.neighborhood').append(newOption);
     };
 
+    for (i = 0; i < Categories.length; i++) {
+        var allCategories = $('<option value=' + Categories[i] + '>' + Categories[i] + '</option>');
+        $('.category').append(allCategories);
+    };
+
 
 	var showResults = function () {
         console.log("results hit")
