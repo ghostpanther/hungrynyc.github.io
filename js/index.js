@@ -10,4 +10,6 @@ $(function(){
       // dataType: 'json'
     })
   });
+      data: { "email": $('.email')[0].value, "password": $('.password')[0].value}
+    })
 });
