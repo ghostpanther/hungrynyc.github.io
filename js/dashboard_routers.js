@@ -42,7 +42,9 @@ function GenerateResult (){
             $('.name')[0].innerText = rest.name;
             $('.address')[0].innerText = rest.location[0] + " " + rest.location[1] + " " + rest.location[2]
             $('.rating').attr("src", rest.rating_image);
-        })
+            $('.phone')[0].innerText = rest.phone;
+            $('.yelp_website')[0].innerText = rest.yelp_website;
+        });
         StartTimer();
     } else {
         $('.timer')[0].innerText = "You're Here!";
