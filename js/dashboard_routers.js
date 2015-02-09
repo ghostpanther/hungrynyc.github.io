@@ -7,6 +7,7 @@ Manhattan = [ "Battery Park City" , "Bowery" , "Central Park" , "Chinatown" , "C
 Bronx = [ "Bedford Park" , "Belmont" , "Fordham" , "Kingsbridge" , "Marble Hill" , "Norwood" , "Riverdale" , "University Heights" , "Woodlawn" , "Downtown Bronx" , "East Tremont" , "Highbridge" , "Hunts Point" , "Longwood" , "Melrose" , "Morris Heights" , "Morrisania" , "Mott Haven" , "The Hub" , "Tremont" , "West Farms" , "Allerton" , "Baychester" , "Bronxdale" , "City Island" , "Co-op City" , "Eastchester" , "Edenwald" , "Indian Village" , "Laconia" , "Olinville" , "Morris Park" , "Pelham Gardens" , "Pelham Parkway" , "Van Nest" , "Wakefield" , "Williamsbridge" , "Bronx River" , "Bruckner" , "Castle Hill" , "Clason Point" , "Country Club" , "Edgewater Park" , "Harding Park" , "Parkchester" , "Park Versailles" , "Pelham Bay" , "Soundview" , "Schuylerville" , "Throggs Neck" , "Unionport" , "Westchester Square"]
 Brooklyn = [ "Brooklyn Heights" , "Brooklyn Navy Yard" , "Cadman Plaza" , "Clinton Hill" , "Downtown Brooklyn" , "DUMBO" , "Fort Greene" , "Fulton" , "Pacific Park" , "Prospect Heights" , "Vinegar Hill" , "South Brooklyn" , "Bedford" , "Bushwick" , "Greenpoint" , "Williamsburg" , "Crown Heights" , "Ditmas Park" , "Flatbush" , "Prospect Park" , "Bath Beach" , "Bay Ridge" , "Bensonhurst", "Borough Park" , "Dyker Heights" , "Mapleton" , "New Utrecht" , "Sunset Park" , "Barren Island" , "Bergen Beach" , "Canarsie" , "Coney Island" , "Flatlands" , "Gerritsen Beach" , "Gravesend" , "Homecrest", "Marine Park" , "Midwood " , "Mill Basin" , "Plumb Beach" , "Brownsville" , "East New York" , "Highland Park" ]
 Staten_island = [ "Annadale" , "Arden Heights" , "Arlington" , "Arrochar" , "Bay Terrace" , "Bloomfield" , "Brighton Heights" , "Bulls Head" , "Castleton" , "Castleton Corners" , "Charleston" , "Chelsea" , "Clifton" , "Concord" , "Dongan Hills" , "Egbertville" , "Elm Park" , "Eltingville" , "Emerson Hill" , "Fort Wadsworth" , "Graniteville" , "Grant City" , "Grasmere" , "Great Kills" , "Greenridge" , "Grymes Hill" , "Hamilton Park" , "Heartland Village" , "Huguenot" , "Lighthouse Hill" , "Livingston" , "Manor Heights" , "Mariners Harbor" , "Meiers Corners" , "Midland Beach" , "New Brighton" , "New Dorp" , "New Springville" , "Oakwood" , "Ocean Breeze" , "Old Place" , "Old Town" , "Pleasant Plains" , "Port Richmond" , "Prince's Bay" , "Randall Manor" , "Richmond Valley" , "Richmondtown" , "Rosebank" , "Rossville" , "Sandy Ground" , "Shore Acres" , "Silver Lake" , "South Beach" , "St. George" , "Stapleton" , "Stapleton Heights" , "Sunnyside" , "Todt Hill" , "Tompkinsville" , "Tottenville" , "Tottenville Beach" , "Travis" , "Ward Hill" , "Westerleigh" , "West New Brighton" , "Willowbrook" , "Woodrow" ]
+Categories = [ "Afghan" , "African" , "American (New)" , "American (Traditional)" , "Arabian","Argentin", "Armenian" , "Asian Fusion" , "Australian" , "Austrian" , "Bangladeshi" , "Barbeque" , "Basque" , "Belgian" , "Brasseries" ,  "Brazilian" , "Breakfast & Brunch" , "British" , "Buffets" , "Burgers" , "Burmese" , "Cafes" , "Cafeteria" , "Cajun/Creole" , "Cambodian" , "Cantonese" , "Caribbean" , "Catalan" , "Chicken Shop" , "Chicken Wings" , "Chinese" , "Colombian" , "Comfort Food" , "Creperies" , "Cuban" , "Czech" , "Delis" , "Dim Sum" , "Diners" , "Dominican" , "Egyptian" , "Ethiopian" , "Falafel" , "Fast Food" , "Filipino" , "Fish & Chips" , "Fondue" , "Food Court" , "Food Stands" , "French" , "Gastropubs" , "German" , "Gluten-Free" , "Greek" , "Haitian" , "Halal" , "Hawaiian" ,"Himalayan/Nepalese" , "Hot Dogs" , "Hot Pot" , "Hungarian" , "Iberian" , "Indian" , "Indonesian" , "Irish" , "Italian" , "Japanese" , "Korean" , "Kosher" , "Laotian" , "Latin American" , "Lebanese" , "Live/Raw Food" , "Malaysian" , "Mediterranean" , "Mexican" , "Middle Eastern" , "Modern European" , "Mongolian" , "Moroccan" ,  "Pakistani" , "Persian/Iranian" , "Peruvian" , "Pizza" , "Polish" , "Portuguese" , "Poutineries" , "Puerto Rican" , "Ramen" , "Russian" , "Salad" , "Salvadoran" , "Sandwiches" , "Scandinavian" , "Scottish" , "Seafood" , "Senegalese" , "Shanghainese" , "Singaporean" , "Slovakian" , "Soul Food" , "Soup" , "South African" , "Southern" , "Spanish" , "Sri Lankan" , "Steakhouses" , "Sushi Bars" , "Szechuan" , "Taiwanese" , "Tapas Bars" , "Tapas/Small Plates" , "Teppanyaki" , "Tex-Mex" , "Thai" , "Trinidadian" , "Turkish" , "Ukrainian" , "Uzbek" , "Vegan" ,"Vegetarian" , "Venezuelan" , "Vietnamese" ]
 
 var seconds = 11;
 var timerId;
@@ -43,8 +44,11 @@ function StartTimer() {
 // }
 
 function GenerateResult (){
-    var neighborhood = $('.neighborhood')[0].value;
-    var category = $('.category')[0].value;
+    var neighborhood = $('.neighborhood').val();
+    var category = $('.category').val();
+    debugger
+    console.log(neighborhood);
+    console.log(category);
     result_counter += 1;
     seconds = 11;
     if (result_counter != 4) {
@@ -93,21 +97,15 @@ function ScrollDown(){
 $('document').ready(function(){
 
     for (i = 0; i < Manhattan.length; i++) {
-        var newOption = $('<option value=' + Manhattan[i] + '>' + Manhattan[i] + '</option>');
+        var newOption = $('<option value=' + encodeURIComponent(Manhattan[i]) + '>' + Manhattan[i] + '</option>');
         $('.neighborhood').append(newOption);
     };
 
-    for (i = 0; i < Categories.length; i++) {
-        var allCategories = $('<option value=' + Categories[i] + '>' + Categories[i] + '</option>');
-        $('.category').append(allCategories);
-    };
-
-
 	var showResults = function () {
         console.log("results hit")
-			console.log('submitted!');
-			ScrollDown();
-            GenerateResult();
+		console.log('submitted!');
+		ScrollDown();
+        GenerateResult();
 	};
 
     $('.save').submit(function(e){
@@ -117,25 +115,26 @@ $('document').ready(function(){
     })
 
     $('.borough').change(function() {
-        if($(this)[0].value === 'Brooklyn') {
+        if($(this).val() === 'Brooklyn') {
             $('.neighborhood').empty();
             for (i = 0; i < Brooklyn.length; i++) {
+                debugger
                 var newOption = $('<option value=' + Brooklyn[i] + '>' + Brooklyn[i] + '</option>');
                 $('.neighborhood').append(newOption);
             };
-        } else if($(this)[0].value === 'Queens') {
+        } else if($(this).val() === 'Queens') {
             $('.neighborhood').empty();
             for (i = 0; i < Queens.length; i++) {
                 var newOption = $('<option value=' + Queens[i] + '>' + Queens[i] + '</option>');
                 $('.neighborhood').append(newOption);
             };
-        } else if($(this)[0].value === 'Manhatten') {
+        } else if($(this).val() === 'Manhatten') {
             $('.neighborhood').empty();
             for (i = 0; i < Manhattan.length; i++) {
                 var newOption = $('<option value=' + Manhattan[i] + '>' + Manhattan[i] + '</option>');
                 $('.neighborhood').append(newOption);
             };
-        } else if($(this)[0].value === 'Bronx') {
+        } else if($(this).val() === 'Bronx') {
             $('.neighborhood').empty();
             for (i = 0; i < Bronx.length; i++) {
                 var newOption = $('<option value=' + Bronx[i] + '>' + Bronx[i] + '</option>');
