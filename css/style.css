@@ -10,7 +10,10 @@ html, body {
 }
 
 .result {
-	margin-bottom: 100px;
 	height: 83%;
 	position: fixed;
+	background-image: url("https://38.media.tumblr.com/tumblr_lr4nntl2Er1qhq1pjo1_500.gif");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
 }
