@@ -16,10 +16,8 @@ h1 {
   float: left;
 }
 
-header {
-  nav {
-    vertical-align: bottom;
-  }
+header < nav {
+  vertical-align: bottom;
 }
 
 section {
@@ -40,6 +38,12 @@ section {
 
 .history {
   background-color: cornflowerblue;
+}
+
+.favorites < ul, .history < ul {
+  height: 150px;
+  white-space: nowrap;
+  overflow: scroll;
 }
 
 /*** EDIT FORM MODAL ***/
