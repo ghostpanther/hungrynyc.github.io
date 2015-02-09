@@ -47,6 +47,16 @@ function GenerateResult (){
             $('.rating').attr("src", rest.rating_image);
             $('.phone')[0].innerText = phone;
             $('.yelp_website')[0].innerText = url;
+
+            var split = rest.name.split(" ")
+            var join = split.join("+")
+
+            $('google_maps').innerText[0] = '
+            width="250"
+            height="250"
+            frameborder="0" style="border:0"
+            src="https://www.google.com/maps/embed/v1/place?key=obq-2QtxT6TjLL1QYtt3T24A
+            &q=' + join + ',' + rest.location[0] + rest.location[2]+ '+NY>'
         });
         StartTimer();
     } else {
