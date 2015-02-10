@@ -2,6 +2,8 @@ console.log('LOADED: PROFILE JS');
 
 $(function(){
 
+
+
   $('.toggle').click(showHideList);
   $('.toggle').click();
 
