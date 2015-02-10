@@ -8,6 +8,7 @@ function VerifyToken() {
         data: {"token" : token},
         dataType: "json"
     }).done(function(data){
+        debugger
         if (data.response === true) {
             console.log("Success");
         } else {
@@ -31,7 +32,7 @@ function DeleteToken() {
         type: "DELETE",
         success: function(){
         token = sessionStorage.setItem("token", "");
-        window.location.href = "../index.html";
+        window.location.href = "index.html";
             }
         });
     });
