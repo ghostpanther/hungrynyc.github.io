@@ -28,7 +28,7 @@ function DeleteToken() {
         e.preventDefault();
         $.ajax({
         url: "https://hidden-ravine-3378.herokuapp.com/sessions/"+id,
-        type: "DELETE"
+        type: "DELETE",
         success: function(){
         token = sessionStorage.setItem("token", "");
         window.location.href = "../index.html";
