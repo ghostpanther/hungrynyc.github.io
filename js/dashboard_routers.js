@@ -1,5 +1,23 @@
 console.log('routes loaded');
 
+function VerifyToken() {
+    var token = sessionStorage.getItem("token")
+    $.ajax({
+        url: "http://127.0.0.1:3000/sessions",
+        type: "GET",
+        data: {"token" : token},
+        dataType: "json"
+    }).done(function(data){
+        if (data.response === true) {
+            console.log("Success");
+        } else {
+            console.log("Fail")
+        }
+    });
+}
+
+
+VerifyToken();
 // *****PAGE FUNCTIONS*******
 
 Queens = ["Astoria" , "Corona" , "East Elmhurst" , "Elmhurst" , "Forest Hills" , "Fresh Pond" , "Glendale" , "Hunters Point" , "Jackson Heights" , "Long Island City" , "Maspeth" , "Middle Village" , "Rego Park" , "Ridgewood" , "Sunnyside" , "Woodside" ]
