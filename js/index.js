@@ -14,8 +14,8 @@ $(function(){
 	      data: { "email": email, "password": pass}
 	    }).done(function(data){
 	    	console.log(data);
-	    	sessionStorage.setItem("token", data["key"])
-	    	window.location('../dashboard.html');
+	    	sessionStorage.setItem("token", data["key"]);
+	    	window.location.href = "../hungrynyc.github.io/dashboard.html";
 	    })
 	  
 	});
