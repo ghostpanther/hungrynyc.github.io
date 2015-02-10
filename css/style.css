@@ -5,6 +5,7 @@
 	text-align: center;
 	opacity: 0.5;
 	color: white;
+	padding-top: 10px;
 }
 
 html, body {
@@ -24,11 +25,12 @@ html, body {
 
 .result {
 	color: black;
+	padding-top: 10px;
 	/*text-align: center;*/
 	
 	}
 .a {
-  
+  padding-top: 10px;
 
 }
 
@@ -42,5 +44,4 @@ html, body {
 	padding-bottom: 24px;
 */
 	/*background-color: white;*/
-
 }
