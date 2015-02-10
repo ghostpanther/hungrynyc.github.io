@@ -16,7 +16,6 @@ $(function(){
 	    	console.log(data);
 	    	sessionStorage.setItem("token", data["key"]);
 	    	sessionStorage.setItem("id", data["id"]);
-	    	console.log(data["id"])
 	    	window.location.href = "../dashboard.html";
 	    })
 	  
