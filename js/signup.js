@@ -10,7 +10,7 @@ $(function(){
     $.ajax({
       url: 'http://hungrynyc.github.io/sessions',
       type: 'POST',
-      data: { "f_name": first, "l_name": last, "email": email, "password": password },
+      data: JSON.stringify({ "f_name": first, "l_name": last, "email": email, "password": password }),
       dataType: 'json'
     }).done(function(data){
       console.log('You just signed up!')
