@@ -33,6 +33,7 @@ function DeleteToken() {
         token = sessionStorage.setItem("token", "");
         window.location.href = "../index.html";
             }
+        });
     });
 }
 
