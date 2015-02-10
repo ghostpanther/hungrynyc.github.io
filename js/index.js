@@ -15,6 +15,8 @@ $(function(){
 	    }).done(function(data){
 	    	console.log(data);
 	    	sessionStorage.setItem("token", data["key"]);
+	    	sessionStorage.setItem("id", data["id"]);
+	    	console.log(data["id"])
 	    	window.location.href = "../hungrynyc.github.io/dashboard.html";
 	    })
 	  
