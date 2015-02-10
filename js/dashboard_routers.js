@@ -19,22 +19,18 @@ function VerifyToken() {
 }
 
 //FUTURE HOME OF THE DELETE BUTTONS
-// function DeleteToken(){
-//   var token = sessionStorage.getItem("token");
-//   var id = sessionStorage.getItem("id");
-//     $.ajax({
-//         url: "http://127.0.0.1:3000/sessions/"+id,
-//         type: "DELETE",
-//         data: {"token" : token},
-//         dataType: "json"
-//     }).done(function(data){
-//        token = sessionStorage.setItem("token", "this has been deleted")
-//        console.log(token)
+function DeleteToken(){
+  var token = sessionStorage.getItem("token");
+  var id = sessionStorage.getItem("id");
+    $("#logout").on("submit", function(){
+        $.ajax({
+        url: "http://127.0.0.1:3000/sessions/"+id,
+        type: "DELETE"
+        })
+    });
+}
 
-//     });
-// }
-
-// DeleteToken()
+DeleteToken()
 
 VerifyToken();
 // *****PAGE FUNCTIONS*******
