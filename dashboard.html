@@ -22,6 +22,15 @@
 				<option value="Italian">Italian</option>
 				<option value="Sushi">Sushi</option>
 				<option value="American">American</option>
+				<option value="Mexican">Mexican</option>
+				<option value="Japanese">Japanese</option>
+				<option value="Burgers">Burgers</option>
+				<option value="Seafood">Seafood</option>
+				<option value="Thai">Thai</option>
+				<option value="Deli">Deli</option>
+				<option value="Korean">Korean</option>
+				<option value="Sandwhiches">Sandwhiches</option>
+				<option value="French">French</option>
 			</select>
 			restaurant in 
 			<select class="borough" name="borough">
@@ -43,20 +52,25 @@
 		</form>
 	</div>
 	<div data-route="results" class="result">
-		<h1 class="timer"></h1>
-		<iframe class="google_maps"></iframe>
-		<h1 class="name"></h1>
-		<h3 class="address"></h3>
-		<img class="rating" src=""/>
-		<h3 class="phone"></h3>
-		<h3 class="yelp_website"></h3>
-		<form class="save">
+		<div class = "a">
+			<h1 class="timer"></h1>
+			<h1 class="name"></h1>
+			<h3 class="address"></h3>
+			<img class="rating" src=""/>
+			<h3 class="phone"></h3>
+			<h3 class="yelp_website"></h3>
+			<form class="save">
 			<input type="hidden" name="name"/>
 			<input type="hidden" name="address"/>
 			<input type="hidden" name="ratign"/>
 			<input type="hidden" name="phone"/>
 			<button>I Want to Go!</button>
 		</form>
+	 	</div>
+		<div class = "gmap">
+			<iframe class="google_maps"></iframe>
+	 	</div>
+		
 	</div>
 </body>
 </html>
