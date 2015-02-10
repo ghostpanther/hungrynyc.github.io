@@ -9,13 +9,15 @@ $(function(){
   	console.log(email +" " + pass)
 
 	    $.ajax({
-	      url: 'http://127.0.0.1:3000/sessions',
+	      url: 'https://hidden-ravine-3378.herokuapp.com/sessions',
 	      type: 'POST',
 	      data: { "email": email, "password": pass}
 	    }).done(function(data){
 	    	console.log(data);
 	    	sessionStorage.setItem("token", data["key"]);
-	    	window.location.href = "../hungrynyc.github.io/dashboard.html";
+	    	sessionStorage.setItem("id", data["id"]);
+	    	console.log(data["id"])
+	    	window.location.href = "../dashboard.html";
 	    })
 	  
 	});
