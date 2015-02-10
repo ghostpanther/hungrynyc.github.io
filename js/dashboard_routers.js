@@ -3,7 +3,7 @@ console.log('routes loaded');
 function VerifyToken() {
     var token = sessionStorage.getItem("token")
     $.ajax({
-        url: "http://127.0.0.1:3000/sessions",
+        url: "https://hidden-ravine-3378.herokuapp.com/sessions",
         type: "GET",
         data: {"token" : token},
         dataType: "json"
@@ -18,6 +18,7 @@ function VerifyToken() {
     });
 }
 
+//FUTURE HOME OF THE DELETE BUTTONS
 // function DeleteToken(){
 //   var token = sessionStorage.getItem("token");
 //   var id = sessionStorage.getItem("id");
