@@ -1,7 +1,6 @@
 console.log('routes loaded');
 
 function VerifyToken() {
-    $(function(){
     var token = sessionStorage.getItem("token")
     $.ajax({
         url: "https://hidden-ravine-3378.herokuapp.com/sessions",
@@ -16,7 +15,6 @@ function VerifyToken() {
             var noEntry = $('<h1>YOU ARE NOT AUTHORIZED</h1>')
             $('body').append(noEntry)
         }
-    });
     });
 }
 
