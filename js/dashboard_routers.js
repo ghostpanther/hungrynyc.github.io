@@ -11,7 +11,9 @@ function VerifyToken() {
         if (data.response === true) {
             console.log("Success");
         } else {
-            console.log("Fail")
+            $('body').empty();
+            var noEntry = $('<h1>YOU ARE NOT AUTHORIZED</h1>')
+            $('body').append(noEntry)
         }
     });
 }
@@ -56,6 +58,10 @@ function UpdateTime() {
     }; 
 };
 
+function VerifyToken() {
+    sessionStorage.getItem("token")
+}
+
 function StartTimer() {
     seconds--;
     $('.timer')[0].innerText = seconds;
@@ -63,7 +69,6 @@ function StartTimer() {
 }
 
 
- // 'https://hidden-ravine-3378.herokuapp.com/histories't
 // function displayInfo(rest) {
 //     var phone = rest.phone.slice(0,3) + '-' + rest.phone.slice(3,6) + '-' + rest.phone.slice(6,10);
 //     var url = '<a href="' + rest.yelp_website + '">See Yelp Page</a>';
@@ -80,7 +85,6 @@ function StartTimer() {
 function GenerateResult (){
     var neighborhood = $('.neighborhood').val();
     var category = $('.category').val();
-    debugger
     console.log(neighborhood);
     console.log(category);
     result_counter += 1;
@@ -152,7 +156,6 @@ $('document').ready(function(){
         if($(this).val() === 'Brooklyn') {
             $('.neighborhood').empty();
             for (i = 0; i < Brooklyn.length; i++) {
-                debugger
                 var newOption = $('<option value=' + Brooklyn[i] + '>' + Brooklyn[i] + '</option>');
                 $('.neighborhood').append(newOption);
             };

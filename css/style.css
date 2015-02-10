@@ -1,16 +1,19 @@
 .selection {
-	background-color: grey;
+	background-color: black;
 	height: 100%;
 	overflow-y: hidden;	
+	text-align: center;
+	opacity: 0.5;
+	color: white;
 }
 
 html, body {
 	text-align: center;
 	margin: 0;
-	width: 75%;
-	height: 75%;
+	width: 100%;
+	height: 100%;
 	position: fixed;
-	background-image: url("http://www.skyline-newyork.com/wp-content/uploads/2012/09/New-York-City-Skyline-Image.jpg");
+	background-image: url("https://d3ui957tjb5bqd.cloudfront.net/images/screenshots/products/13/130/130457/vh987xvdwrl439nmp5iufw5ulyptjnbu1ktacjzvxhyvhdl3soueuoz4vtjjhlgo-f.jpg?1403121358");
 
 /*	background-image: url("https://38.media.tumblr.com/tumblr_lr4nntl2Er1qhq1pjo1_500.gif");*/
 	background-repeat: no-repeat;
@@ -20,5 +23,24 @@ html, body {
 }
 
 .result {
-	color: white;
+	color: black;
+	/*text-align: center;*/
+	
+	}
+.a {
+  
+
+}
+
+.gmap {
+	/*position: fixed;*/
+	/*float: 
+	right;*/
+	/*padding-left: 50px;
+	padding-top: 50px;
+	padding-right: 50px;
+	padding-bottom: 24px;
+*/
+	/*background-color: white;*/
+
 }
