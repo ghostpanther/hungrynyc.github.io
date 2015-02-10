@@ -8,9 +8,9 @@ $(function(){
     var email = $("input[name='email']").val()
     var password = $("input[name='password']").val()
     $.ajax({
-      url: 'http://hungrynyc.github.io//sessions',
+      url: 'http://hungrynyc.github.io/sessions',
       type: 'POST',
-      data: JSON.stringify({ f_name: fname, lname: l_name, email: email, password: password }),
+      data: JSON.stringify({ f_name: first, lname: last, email: email, password: password }),
       dataType: 'json'
     }).done(function(data){
       console.log('You just signed up!')
