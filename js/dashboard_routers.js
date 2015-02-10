@@ -127,8 +127,8 @@ function ScrollDown(){
     $('.result').css('position', 'relative') //Change the the 'result' div position to relative
     $('html, body').animate({ // Animate the body of the html to perform the following commands:
         scrollTop: $('.result').offset().top // For 'result' tab, move it to the top of the screen by 750 miliseconds.
-    }, 500); 
-    $('.selection').delay(550).hide(250); //Aftr 750 miliseconds, hide the 'selection' div.
+    }, 300); 
+    $('.selection').delay(500).hide(100); //Aftr 750 miliseconds, hide the 'selection' div.
 }
 
 // *****ROUTE DIRECTOR*******
