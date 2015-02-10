@@ -22,6 +22,10 @@ function UpdateTime() {
     }; 
 };
 
+function VerifyToken() {
+    sessionStorage.getItem("token")
+}
+
 function StartTimer() {
     seconds--;
     $('.timer')[0].innerText = seconds;
