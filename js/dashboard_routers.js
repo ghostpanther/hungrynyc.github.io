@@ -20,8 +20,8 @@ function VerifyToken() {
 
 VerifyToken();
 
-//FUTURE HOME OF THE DELETE BUTTONS
-function DeleteToken(){
+
+function DeleteToken() {
   var token = sessionStorage.getItem("token");
   var id = sessionStorage.getItem("id");
     $("#logout").on("submit", function(e){
@@ -29,9 +29,10 @@ function DeleteToken(){
         $.ajax({
         url: "https://hidden-ravine-3378.herokuapp.com/sessions/"+id,
         type: "DELETE"
-        }).done(function(){
-        token = sessionStorage.setItem("token", "")
-            });
+        success: function(){
+        token = sessionStorage.setItem("token", "");
+        window.location.href = "../index.html";
+            };
     });
 }
 

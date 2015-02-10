@@ -4,9 +4,8 @@ $(function(){
 
   $('#login-form').on('submit', function(e){
   	  	e.preventDefault()
-  	var email = $(".login_email").val();
-  	var pass = $(".login_pass").val();
-  	console.log(email +" " + pass)
+	  	var email = $(".login_email").val();
+	  	var pass = $(".login_pass").val();
 
 	    $.ajax({
 	      url: 'https://hidden-ravine-3378.herokuapp.com/sessions',
