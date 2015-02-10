@@ -2,11 +2,15 @@ console.log('LINKED');
 
 $(function(){
 
-  $('form').on('submit', function(){
+  $('#sign-up').on('submit', function(){
+    var fname = $("input[name='fname']").val()
+    var lname = $("input[name='lname']").val()
+    var email = $("input[name='email']").val()
+    var password = $("input[name='password']").val()
     $.ajax({
       url: 'http://hungrynyc.github.io//sessions',
       type: 'POST',
-      data: JSON.stringify({ fname: fname, lname: lname, email: email, password: password }),
+      data: JSON.stringify({ f_name: fname, lname: l_name, email: email, password: password }),
       dataType: 'json'
     }).done(function(data){
       console.log('You just signed up!')
