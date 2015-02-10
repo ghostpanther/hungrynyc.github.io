@@ -8,20 +8,19 @@
 	<script type="text/javascript" src="./js/index.js"></script>
 </head>
 <body>
-  <div class="wrapper">
+  <section id="main">
+    <video class="background-video" muted loop>
+      <source src="//demosthenes.info/assets/videos/polina.webm" type="video/webm">
+      <source src="//demosthenes.info/assets/videos/polina.mp4" type="video/mp4">
+    </video>
+    <div class="content">
+      <h1>Hungry NYC</h1>
+      <p class="tagline">For the hungry and indecisive New Yorker.</p>
+      <a href="#login" class="btn">Log In</a> 
+      <a href="#signup" class="btn">Sign Up</a>
+    </div>
 
-    <h1>Hungry NYC</h1>
-
-    <a href="#login" class="btn">Log In</a> 
-    <a href="#signup" class="btn">Sign Up</a>
-
-    <div id="about-btn">How does it work?</div>
-
-    <section id="how-it-works">
-    </section>
-
-
-    <!--   Login Form -->
+      <!--   Login Form -->
     <div id="login" class="login-form-modal">
       <a href="#close" title="close" class="close-it">Close!</a>
       <form id="login-form">
@@ -60,7 +59,22 @@
         <button>Sign Up</button>
       </form>
     </div>
-  </div>
+  </section>
+
+  <div id="about-btn">How does it work?</div>
+
+  <section id="how-it-works">
+    <div class="">
+      <ol>
+        <li>You select a type of cuisine and desired neighborhood in your borough.</li>
+        <li>We randomly generate a great restaurant for you to go to.</li>
+        <li>You have three chances to make a decision, otherwise we make the decision for you.</li>
+      </ol>
+    </div>
+  </section>
+
+
+
 
 <!--   <footer>
   Powered by <a href="https://www.yelp.com" target="_blank" class="logo_link"><img src="http://s3-media1.fl.yelpcdn.com/assets/2/www/img/14f29ad24935/map/miniMapLogo.png"></a>.
