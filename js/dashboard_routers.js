@@ -18,21 +18,25 @@ function VerifyToken() {
     });
 }
 
+VerifyToken();
+
 //FUTURE HOME OF THE DELETE BUTTONS
 function DeleteToken(){
   var token = sessionStorage.getItem("token");
   var id = sessionStorage.getItem("id");
-    $("#logout").on("submit", function(){
+    $("#logout").on("submit", function(e){
+        e.preventDefault();
         $.ajax({
         url: "http://127.0.0.1:3000/sessions/"+id,
         type: "DELETE"
-        })
+        }).done(function(){
+        token = sessionStorage.setItem("token", "")
+            });
     });
 }
 
-DeleteToken()
+DeleteToken();
 
-VerifyToken();
 // *****PAGE FUNCTIONS*******
 
 Queens = ["Astoria" , "Corona" , "East Elmhurst" , "Elmhurst" , "Forest Hills" , "Fresh Pond" , "Glendale" , "Hunters Point" , "Jackson Heights" , "Long Island City" , "Maspeth" , "Middle Village" , "Rego Park" , "Ridgewood" , "Sunnyside" , "Woodside" ]
