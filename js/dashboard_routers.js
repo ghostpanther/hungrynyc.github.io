@@ -1,6 +1,9 @@
 console.log('routes loaded');
 
+$(function(){
+
 function VerifyToken() {
+    console.log("You are in VerifyToken")
     var token = sessionStorage.getItem("token")
     $.ajax({
         url: "http://127.0.0.1:3000/sessions",
@@ -16,7 +19,7 @@ function VerifyToken() {
             $('body').append(noEntry)
         }
     });
-}
+};
 // https://hidden-ravine-3378.herokuapp.com
 VerifyToken();
 
@@ -24,19 +27,19 @@ VerifyToken();
 function DeleteToken() {
   var token = sessionStorage.getItem("token");
   var id = sessionStorage.getItem("id");
+  console.log(id)
       $.ajax({
         url: "http://127.0.0.1:3000/sessions/"+id,
         type: "DELETE",
-        success: function(){
-        token = sessionStorage.setItem("token", "");
-        window.location.href = "index.html";
-            }
-        
-    });
+        }).done(function(data){
+            console.log(data.response)
+       // token = sessionStorage.setItem("token", "");
+       // id = sessionStorage.setItem("id", "");
+        // window.location.href = "../hungrynyc.github.io/index.html";
+        })
 }
 
-$("#logout").on("submit", function(e){
-    e.preventDefault();
+$("#logout").on("click", function(){
     DeleteToken();
 });
 
@@ -205,4 +208,6 @@ $('document').ready(function(){
     });
 
     router.init();
+});
+
 });
