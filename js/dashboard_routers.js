@@ -3,7 +3,7 @@ console.log('routes loaded');
 function VerifyToken() {
     var token = sessionStorage.getItem("token")
     $.ajax({
-        url: "https://hidden-ravine-3378.herokuapp.com/sessions",
+        url: "http://127.0.0.1:3000/sessions",
         type: "GET",
         data: {"token" : token},
         dataType: "json"
@@ -17,27 +17,28 @@ function VerifyToken() {
         }
     });
 }
-
+// https://hidden-ravine-3378.herokuapp.com
 VerifyToken();
 
 
 function DeleteToken() {
   var token = sessionStorage.getItem("token");
   var id = sessionStorage.getItem("id");
-    $("#logout").on("submit", function(e){
-        e.preventDefault();
-        $.ajax({
-        url: "https://hidden-ravine-3378.herokuapp.com/sessions/"+id,
+      $.ajax({
+        url: "http://127.0.0.1:3000/sessions/"+id,
         type: "DELETE",
         success: function(){
         token = sessionStorage.setItem("token", "");
         window.location.href = "index.html";
             }
-        });
+        
     });
 }
 
-DeleteToken();
+$("#logout").on("submit", function(e){
+    e.preventDefault();
+    DeleteToken();
+});
 
 // *****PAGE FUNCTIONS*******
 
