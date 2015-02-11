@@ -8,7 +8,7 @@ $(function(){
 	  	var pass = $(".login_pass").val();
 
 	    $.ajax({
-	      url: 'http://127.0.0.1:3000/sessions',
+	      url: ' https://hidden-ravine-3378.herokuapp.com/sessions',
 	      type: 'POST',
 	      data: { "email": email, "password": pass}
 	    }).done(function(data){
