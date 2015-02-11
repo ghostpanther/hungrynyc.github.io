@@ -17,7 +17,7 @@ $(function(){
     }).done(function(data){
      
       $.ajax({
-        url: 'http://127.0.0.1:3000/sessions',
+        url: 'https://hidden-ravine-3378.herokuapp.com/sessions',
         type: 'POST',
         data: { "email": email, "password": password}
       }).done(function(data){
