@@ -33,7 +33,7 @@ function deleteToken() {
         }).done(function(data){
             token = sessionStorage.setItem("token", "");
              id = sessionStorage.setItem("id", "");
-             window.location.href = "../hungrynyc.github.io/index.html";
+             window.location.href = "./index.html";
         })
 }
 

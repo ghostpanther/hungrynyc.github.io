@@ -15,16 +15,7 @@ $(function(){
       data: { "f_name": first, "l_name": last, "email": email, "password": password },
       dataType: 'json'
     }).done(function(data){
-     
-      $.ajax({
-        url: 'https://hidden-ravine-3378.herokuapp.com/sessions',
-        type: 'POST',
-        data: { "email": email, "password": password}
-      }).done(function(data){
-        sessionStorage.setItem("token", data["key"]);
-        sessionStorage.setItem("id", data["id"]);
-        window.location.href = "./dashboard.html";
-      })
+        window.location.href = "./index.html";
     })
 
   });
