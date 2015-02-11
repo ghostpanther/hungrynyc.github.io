@@ -1,9 +1,7 @@
+$(function(){
 console.log('routes loaded');
 
-$(function(){
-
-function VerifyToken() {
-    console.log("You are in VerifyToken")
+function verifyToken() {
     var token = sessionStorage.getItem("token")
     $.ajax({
         url: "http://127.0.0.1:3000/sessions",
@@ -15,16 +13,17 @@ function VerifyToken() {
             console.log("Success");
         } else {
             $('body').empty();
-            var noEntry = $('<h1>YOU ARE NOT AUTHORIZED</h1>')
+            var noEntry = $('<h1>YOU ARE NOT AUTHORIZED, GO BACK TO THE LOGIN PAGE AND LOGIN.<br><br> <a href="./index.html">Home</li></h1>')
             $('body').append(noEntry)
         }
     });
 };
+
 // https://hidden-ravine-3378.herokuapp.com
-VerifyToken();
+verifyToken();
 
 
-function DeleteToken() {
+function deleteToken() {
   var token = sessionStorage.getItem("token");
   var id = sessionStorage.getItem("id");
   console.log(id)
@@ -32,15 +31,14 @@ function DeleteToken() {
         url: "http://127.0.0.1:3000/sessions/"+id,
         type: "DELETE",
         }).done(function(data){
-            console.log(data.response)
-       // token = sessionStorage.setItem("token", "");
-       // id = sessionStorage.setItem("id", "");
-        // window.location.href = "../hungrynyc.github.io/index.html";
+            token = sessionStorage.setItem("token", "");
+             id = sessionStorage.setItem("id", "");
+             window.location.href = "../hungrynyc.github.io/index.html";
         })
 }
 
 $("#logout").on("click", function(){
-    DeleteToken();
+    deleteToken();
 });
 
 // *****PAGE FUNCTIONS*******

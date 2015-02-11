@@ -2,9 +2,9 @@ console.log('signup.js');
 
 $(function(){
 
-  $('#login-form').on('submit', function(){
-    var first = $("input[name='first']").val()
-    var last = $("input[name='last']").val()
+  $('#sign-up').on('submit', function(){
+    var first = $("input[name='fname']").val()
+    var last = $("input[name='lname']").val()
     var email = $("input[name='email']").val()
     var password = $("input[name='password']").val()
     $.ajax({
@@ -15,7 +15,7 @@ $(function(){
     }).done(function(data){
       console.log('You just signed up!')
       console.log(data);
-      window.location.href="../dashboard.html";
+      window.location.href="./dashboard.html";
     });
   });
 
