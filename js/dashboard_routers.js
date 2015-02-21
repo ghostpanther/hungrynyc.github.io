@@ -4,7 +4,7 @@ console.log('routes loaded');
 function verifyToken() {
     var token = sessionStorage.getItem("token")
     $.ajax({
-        url: " https://glacial-lowlands-5383.herokuapp.com/sessions",
+        url: " https://hungrynyc.herokuapp.com/sessions",
         type: "GET",
         data: {"token" : token},
         dataType: "json"
@@ -28,7 +28,7 @@ function deleteToken() {
   var id = sessionStorage.getItem("id");
   console.log(id)
       $.ajax({
-        url: " https://glacial-lowlands-5383.herokuapp.com/sessions/"+id,
+        url: " https://hungrynyc.herokuapp.com/sessions/"+id,
         type: "DELETE",
         }).done(function(data){
             token = sessionStorage.setItem("token", "");
@@ -97,7 +97,7 @@ function GenerateResult (){
     if (result_counter != 4) {
         console.log(result_counter);
         $.ajax({
-            url:'https://glacial-lowlands-5383.herokuapp.com/histories',
+            url:'https://hungrynyc.herokuapp.com/histories',
             method: 'GET',
             data: {neighborhood: neighborhood, category: category }
         }).done(function(rest) {
