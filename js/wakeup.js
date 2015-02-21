@@ -6,4 +6,4 @@ var wakeup = setInterval(function() {
 		}).done(function(data){
 			console.log("WAKE UP!")
 		})
-	}, 2000)
+	}, 600000)
