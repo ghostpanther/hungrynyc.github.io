@@ -10,7 +10,7 @@ $(function(){
     var password = $("input[name='signup_password']").val()
     
    $.ajax({
-      url: ' https://hidden-ravine-3378.herokuapp.com/users',
+      url: 'https://glacial-lowlands-5383.herokuapp.com/users',
       type: 'POST',
       data: { "f_name": first, "l_name": last, "email": email, "password": password },
       dataType: 'json'

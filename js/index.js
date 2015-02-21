@@ -8,7 +8,7 @@ $(function(){
 	  	var pass = $(".login_pass").val();
 
 	    $.ajax({
-	      url: ' https://hidden-ravine-3378.herokuapp.com/sessions',
+	      url: 'https://glacial-lowlands-5383.herokuapp.com//sessions',
 	      type: 'POST',
 	      data: { "email": email, "password": pass}
 	    }).done(function(data){
