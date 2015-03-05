@@ -8,7 +8,7 @@ $(function(){
 	  	var pass = $(".login_pass").val();
 
 	    $.ajax({
-	      url: 'https://hungrynyc.herokuapp.com//sessions',
+	      url: 'https://hungrynyc.herokuapp.com/sessions',
 	      type: 'POST',
 	      data: { "email": email, "password": pass}
 	    }).done(function(data){
